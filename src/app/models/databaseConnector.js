@@ -5,7 +5,7 @@ class MongoConnector{
     constructor(config){
         console.log(config)
         this.database = config.db_database;
-        this.uri = `mongodb://${config.db_username}:${config.db_password}@${config.db_url}:${config.db_port}`;
+        this.uri = `mongodb://${config.db_username}:${config.db_password}@${config.db_hostname}:${config.db_port}`;
     }
     async run(collection){
         this.client = new MongoClient(this.uri, {
