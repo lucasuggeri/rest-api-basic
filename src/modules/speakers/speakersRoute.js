@@ -1,4 +1,11 @@
-import {Router} from 'express'
+import {
+    Router
+} from 'express'
+import {
+    celebrate,
+    Joi,
+    Segments
+} from 'celebrate';
 import speakersController from './speakersController.js';
 const route = Router();
 
@@ -42,15 +49,12 @@ const route = Router();
  *       '400':
  *         description:  unsuccessful operation
  */
-route.get('/',async (req,res)=>{
-    let search = {}
-    if(req.query){
-        search = req.query;
-        if(req.query.speakerId)search._id = req.query.speakerId;
-        delete search.speakerId;
-    }
-    return res.json(await speakersController.list(search));
-})
+route.get('/', celebrate({
+    [Segments.QUERY]: {
+        nickname: Joi.string(),
+        speakerId: Joi.string(),
+    },
+}), speakersController.list)
 /**
  * @openapi
  * /speakers/{speakerId}:
@@ -74,11 +78,13 @@ route.get('/',async (req,res)=>{
  *       '400':
  *         description: Any other error of the user
  */
-route.delete('/:id',async (req,res)=>{
-    const result = await speakersController.remove({"_id":req.params.id})
-    if(result.deletedCount) res.status(204).send();
-    return res.status(400).send();
-})
+route.delete('/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().guid().required(),
+        },
+    }),
+    speakersController.remove)
 /**
  * @openapi
  * /speakers:
@@ -110,15 +116,12 @@ route.delete('/:id',async (req,res)=>{
  *                   type: string
  *                   example: Juninho
  */
-route.post('/',async (req,res)=>{
-    const result = await speakersController.insert(req.body)
-    if(result.insertedId) {
-        const [inserted] = await speakersController.list({"_id":result.insertedId})
-        console.log(inserted)
-        res.status(201).send(inserted)
-    };
-    return res.status(400).send();
-})
+route.post('/',
+    celebrate({
+        [Segments.BODY]: {
+            nickname: Joi.string().required(),
+        },
+    }), speakersController.insert)
 /**
  * @openapi
  * /speakers/{speakerId}:
@@ -160,15 +163,14 @@ route.post('/',async (req,res)=>{
  *       '400':
  *         description: any other error of the user
  */
-route.put('/:id',async (req,res)=>{
-    const result = await speakersController.update({"_id":req.params.id},req.body)
-    console.log(result)
-    if(result.modifiedCount) {
-        const [inserted] = await speakersController.list({"_id":req.params.id})
-        console.log(inserted)
-        res.status(200).send(inserted)
-    };
-    return res.status(400).send();
-})
+route.put('/:id',
+celebrate({
+    [Segments.PARAMS]: {
+        id: Joi.string().guid().required(),
+    },
+    [Segments.BODY]: {
+        nickname: Joi.string().required(),
+    }
+}), speakersController.update)
 
 export default route;
