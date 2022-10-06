@@ -61,6 +61,10 @@ Iniciar instalação de pacotes necessários com yarn:
 ```
 yarn
 ```
+Após isso, rode o docker-compose para que suba os containers necessários
+```
+docker-compose -f docker-compose.yml up -d
+```
 Executar serviço API:
 ```
 yarn dev
