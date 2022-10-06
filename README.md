@@ -71,33 +71,8 @@ Listening on port 3000
 ```
 Indicando que o servidor está rodando em localhost na porta 3000
 ## 🎈 Como usar <a name="usage"></a>
-_Endpoint_
 
-`<url>/speakers`
-
-Método: *GET*
-
-Query(opcional):
-```json
-$url/speakers?$campo=$pesquisa
-```
-Retorno esperado:
-```json
-[
-	{
-		"_id": "632ff2be43b29bb903c29545",
-		"$campo": "$pesquisa"
-	},
-	...
-]
-```
-| Propriedade          | Descrição                                                    |
-| -------------------- | ------------------------------------------------------------ |
-| nome                 | Nome do palestrante                                          |
-| idade                | Idade do palestrante                                         |
-| nacionalidade        | Nacionalidade do palestrante                                 |
-
-
+Para olhar a documentação, rode o servidor localmente e acesse a "/api-docs"
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
