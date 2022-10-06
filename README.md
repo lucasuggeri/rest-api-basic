@@ -83,7 +83,9 @@ Para olhar a documentação, rode o servidor localmente e acesse a "/api-docs"
 - [Express](https://expressjs.com/) - Server Framework
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 - [Celebrate](https://www.npmjs.com/package/celebrate) - Middleware validator
-
+- [Swagger-ui-express](https://www.npmjs.com/package/swagger-ui-express) - Swagger Render
+- [Swagger-JSdoc](https://github.com/Surnet/swagger-jsdoc) - Convert Comments to Swagger
+- [MongoDb](https://www.mongodb.com/) - Non-relational  Database
 ## ✍️ Autor <a name = "autor"></a>
 
 - [@JuninhoFreitas](https://github.com/JuninhoFreitas) - Desenvolvimento e documentação
