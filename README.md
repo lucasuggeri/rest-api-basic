@@ -32,8 +32,10 @@
   API que contenha todos os métodos CRUD, Criar, Ler, Atualizar e Deletar Dados em um Banco de Dados.
   Contém validador de requests, que verificará se os dados que o cliente está enviando a sua API estão corretos.
   Tratamento de Erros, ao invés de retornar throws e stack traces, retorna http codes correto para acidentes.
-  Plus Conteirização com Docker.
-  Plus Swagger para documentação.
+  
+  +Adicional Conteirização com Docker.
+  
+  +Adicional Swagger para documentação.
 </p>
 
 
