@@ -1,3 +1,6 @@
+import dotenv from 'dotenv'
+dotenv.config();
+
 const config = {
     environment: process.env.NODE_ENV || 'dev',
     port: process.env.PORT || 3000,
@@ -7,5 +10,5 @@ const config = {
     db_password: process.env.DATABASE_PASSWORD || 'iLoveNodeJs',
     db_database: process.env.DATABASE_DATABASE || 'rest-api-basic',
 }
-
+console.log('--------------\n%s\n-------------------', config)
 export default config;

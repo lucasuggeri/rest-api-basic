@@ -2,8 +2,10 @@ import express from 'express'
 import routes from './src/modules/Routes.js'
 import { errors } from 'celebrate';
 import AppError from './src/config/appError.js';
+import config from './src/config/environment.js';
 const app = express();
-const PORT = 3000;
+const PORT = config.port || 3000;
+
 app.use(routes)
 
 app.use(errors());

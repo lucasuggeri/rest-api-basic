@@ -13,6 +13,7 @@ class MongoConnector{
           });
         this.client.connect();
         this.collection = this.client.db(this.database).collection(collection);
+        console.log(this.uri);
     }
     async find(data){
         const [result] = await this.collection.find(data).toArray();

@@ -4,7 +4,7 @@ services:
   db:
     image: mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: juninhoFreitas
-      MONGO_INITDB_ROOT_PASSWORD: iLoveNodeJs
+      MONGO_INITDB_ROOT_USERNAME: user_estoque
+      MONGO_INITDB_ROOT_PASSWORD: pass_estoque
     ports:
       - 27017:27017
