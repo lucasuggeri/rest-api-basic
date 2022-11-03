@@ -1,4 +1,4 @@
-import listProductService from "../../service/insertProductService.js";
-export default async (dadosDoProduto) => {
-  return await listProductService(dadosDoProduto);
+import listProductService from "../../service/ListProductService.js";
+export default async (id) => {
+  return await listProductService(id);
 };

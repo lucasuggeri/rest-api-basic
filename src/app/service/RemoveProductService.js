@@ -1,13 +1,20 @@
 import estoqueModel from "../models/estoqueModel.js";
 
 export default async (dadosDoProduto) => {
-  const result = await estoqueModel.find(dadosDoProduto);
+  const produto = await estoqueModel.find(dadosDoProduto);
 
-  const produtoRemovido = !result.search._id;
+  const produtoNaoEncontrado = !produto.search._id;
 
-  if (produtoRemovido) throw new TypeError("Produto não encontrado");
+  if (produtoNaoEncontrado) throw new TypeError("Produto não encontrado");
 
-  await estoqueModel.remove({
-    _id: result.search._id,
+  const result = await estoqueModel.remove({
+    _id: produto.search._id,
   });
+
+  const produtoDeletado = result.deletedCount;
+
+  if (!produtoDeletado)
+    throw new TypeError("Não foi possível deletar o produto!");
+
+  return true;
 };

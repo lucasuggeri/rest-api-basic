@@ -1,4 +1,4 @@
-import updateProductService from "../../service/insertProductService.js";
-export default async (dadosDoProduto) => {
-  return await updateProductService(dadosDoProduto);
+import updateProductService from "../../service/UpdateProductService.js";
+export default async (id, body) => {
+  return await updateProductService(id, body); //mais um parâmetro
 };

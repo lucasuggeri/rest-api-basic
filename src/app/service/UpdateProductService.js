@@ -1,13 +1,16 @@
 import estoqueModel from "../models/estoqueModel.js";
 
-export default async (dadosDoProduto) => {
-  const result = await estoqueModel.find(dadosDoProduto);
+export default async ({ id, body }) => {
+  //{ id e o body }
 
-  const produtoRemovido = !result.search._id;
-
-  if (produtoRemovido) throw new TypeError("Produto não encontrado");
-
-  await estoqueModel.update({
-    _id: result.search._id,
-  });
+  const target = {
+    _id: id,
+  };
+  const produto = await estoqueModel.find(target);
+  const newData = body;
+  const update = await estoqueModel.update(produto, newData);
+  if (update.modifiedCount) {
+    const [inserted] = await estoqueModel.findAll(target);
+    return inserted;
+  }
 };
